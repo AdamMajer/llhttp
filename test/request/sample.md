@@ -230,7 +230,7 @@ off=9 message complete
 
 ## Line folding in header value with CRLF
 
-<!-- meta={"type": "request"} -->
+<!-- meta={"type": "request-lenient"} -->
 ```http
 GET / HTTP/1.1
 Line1:   abc
@@ -268,7 +268,7 @@ off=98 len=5 span[header_field]="Line4"
 off=110 len=0 span[header_value]=""
 off=110 len=10 span[header_field]="Connection"
 off=124 len=5 span[header_value]="close"
-off=133 headers complete method=1 v=1/1 flags=2 content_length=0
+off=133 headers complete method=1 v=1/1 flags=102 content_length=0
 off=133 message complete
 ```
 
