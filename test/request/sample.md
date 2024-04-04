@@ -369,7 +369,7 @@ off=61 message complete
 
 See nodejs/test/parallel/test-http-headers-obstext.js
 
-<!-- meta={"type": "request"} -->
+<!-- meta={"type": "request-lenient"} -->
 ```http
 GET / HTTP/1.1
 X-SSL-Nonsense:   -----BEGIN CERTIFICATE-----
@@ -444,7 +444,7 @@ off=1873 len=65 span[header_value]="\twTC6o2xq5y0qZ03JonF7OJspEd3I5zKY3E+ov7/ZhW
 off=1940 len=65 span[header_value]="\tYhixw1aKEPzNjNowuIseVogKOLXxWI5vAi5HgXdS0/ES5gDGsABo4fqovUKlgop3"
 off=2007 len=5 span[header_value]="\tRA=="
 off=2014 len=26 span[header_value]="\t-----END CERTIFICATE-----"
-off=2044 headers complete method=1 v=1/1 flags=0 content_length=0
+off=2044 headers complete method=1 v=1/1 flags=100 content_length=0
 off=2044 message complete
 ```
 

@@ -249,3 +249,64 @@ off=33 len=5 span[header_field]="Dummy"
 off=40 len=1 span[header_value]="x"
 off=41 error code=10 reason="Invalid header value char"
 ```
+
+### Spaces before headers
+
+<!-- meta={ "type": "request" } -->
+
+```http
+POST /hello HTTP/1.1
+Host: localhost
+Foo: bar
+ Content-Length: 38
+
+GET /bye HTTP/1.1
+Host: localhost
+
+
+```
+
+```log
+off=0 message begin
+off=5 len=6 span[url]="/hello"
+off=22 len=4 span[header_field]="Host"
+off=28 len=9 span[header_value]="localhost"
+off=39 len=3 span[header_field]="Foo"
+off=44 len=3 span[header_value]="bar"
+off=49 error code=10 reason="Unexpected whitespace after header value"
+```
+
+### Spaces before headers (lenient)
+
+<!-- meta={ "type": "request-lenient" } -->
+
+```http
+POST /hello HTTP/1.1
+Host: localhost
+Foo: bar
+ Content-Length: 38
+
+GET /bye HTTP/1.1
+Host: localhost
+
+
+```
+
+```log
+off=0 message begin
+off=5 len=6 span[url]="/hello"
+off=22 len=4 span[header_field]="Host"
+off=28 len=9 span[header_value]="localhost"
+off=39 len=3 span[header_field]="Foo"
+off=44 len=3 span[header_value]="bar"
+off=49 len=19 span[header_value]=" Content-Length: 38"
+off=72 headers complete method=3 v=1/1 flags=100 content_length=0
+off=72 message complete
+off=72 message begin
+off=76 len=4 span[url]="/bye"
+off=91 len=4 span[header_field]="Host"
+off=97 len=9 span[header_value]="localhost"
+off=110 headers complete method=1 v=1/1 flags=100 content_length=0
+off=110 message complete
+```
+

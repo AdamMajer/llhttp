@@ -263,7 +263,7 @@ off=75 message complete
 
 ### Multiple tokens with folding
 
-<!-- meta={"type": "request"} -->
+<!-- meta={"type": "request-lenient"} -->
 ```http
 GET /demo HTTP/1.1
 Host: example.com
@@ -296,7 +296,7 @@ off=178 len=18 span[header_field]="Sec-WebSocket-Key1"
 off=198 len=20 span[header_value]="4 @1  46546xW%0l 1 5"
 off=220 len=6 span[header_field]="Origin"
 off=228 len=18 span[header_value]="http://example.com"
-off=250 headers complete method=1 v=1/1 flags=15 content_length=0
+off=250 headers complete method=1 v=1/1 flags=115 content_length=0
 off=250 message complete
 off=250 error code=22 reason="Pause on CONNECT/Upgrade"
 ```
@@ -326,7 +326,7 @@ off=75 error code=22 reason="Pause on CONNECT/Upgrade"
 
 ### Multiple tokens with folding, LWS, and CRLF
 
-<!-- meta={"type": "request"} -->
+<!-- meta={"type": "request-lenient"} -->
 ```http
 GET /demo HTTP/1.1
 Connection: keep-alive, \r\n upgrade
@@ -343,7 +343,7 @@ off=32 len=12 span[header_value]="keep-alive, "
 off=46 len=8 span[header_value]=" upgrade"
 off=56 len=7 span[header_field]="Upgrade"
 off=65 len=9 span[header_value]="WebSocket"
-off=78 headers complete method=1 v=1/1 flags=15 content_length=0
+off=78 headers complete method=1 v=1/1 flags=115 content_length=0
 off=78 message complete
 off=78 error code=22 reason="Pause on CONNECT/Upgrade"
 ```
